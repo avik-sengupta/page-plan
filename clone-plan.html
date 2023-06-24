@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BrowserFS Example</title>
+  <script src="js/browserfs.min.js"></script>
+  <script src="js/index.umd.min.js"></script>
+  <script type="module" src="js/index.js"></script>
+  <script type="module">
+	  import {cloneFunction} from './js/module.js'
+
+	  //document.querySelector('#clone').addEventListener('click', cloneFunction)
+	  const form = document.getElementById('myForm');
+  	  form.addEventListener('submit', cloneFunction);
+  </script>
+
+  <style>
+    .container {
+      display: flex;
+    }
+    
+    .box {
+      width: 50%;
+      border: 1px solid black;
+      padding: 10px;
+    }
+  </style>
+
+</head>
+<body>
+
+	<div class="container">
+		<div class="box">
+
+			<form id="myForm">
+			  <input type="text" id="gitUrl">
+			  <input type="text" id="username">
+			  <input type="text" id="token">
+			  <button type="submit">Submit</button>
+			</form>
+
+		</div>
+
+		<div class="box">
+		  	<div id="results"></div>
+		</div>
+</body>
+</html>
