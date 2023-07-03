@@ -108,6 +108,35 @@
 										  		 	sha.then(result => {
 										  		 		console.log(result)
 										  		 		var push = gitPush(fs, '/repo2', username, token);
+										  		 		
+										  		 		push.then(result => {
+									  						console.log(result);
+
+														  	fs.readdir("/repo2", function(err, files) {
+															  if (err) {
+																// Handle error
+																console.log(err);
+																return;
+															  }
+															  console.log('in readfile')
+															  // Log the contents of the file to the console.
+															  console.log("Directory contents:", files);
+															  console.log(files.length)
+															   const list = document.getElementById("results");
+																files.forEach((item) => {
+																	// Create a new list item element
+																	const li = document.createElement("li");
+
+																	// Set the text content of the list item to the array item
+																	li.textContent = item;
+
+																	// Append the list item to the list
+																	list.appendChild(li);
+																});
+
+													 		 });
+									  					});
+
 										  		 });
 
 										 });
@@ -120,29 +149,7 @@
 
 
 
-								// fs.readdir("/repo2", function(err, files) {
-								// 		  if (err) {
-								// 			// Handle error
-								// 			console.log(err);
-								// 			return;
-								// 		  }
-								// 		  console.log('in readfile')
-								// 		  // Log the contents of the file to the console.
-								// 		  console.log("Directory contents:", files);
-								// 		  console.log(files.length)
-								// 		   const list = document.getElementById("results");
-								// 		  files.forEach((item) => {
-								// 			// Create a new list item element
-								// 			const li = document.createElement("li");
-
-								// 			// Set the text content of the list item to the array item
-								// 			li.textContent = item;
-
-								// 			// Append the list item to the list
-								// 			list.appendChild(li);
-								// 		 });
-
-								//   });
+								
 								  
 								  
 
