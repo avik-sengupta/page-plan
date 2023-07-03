@@ -29,13 +29,7 @@
 
 								  var fs = BrowserFS.BFSRequire('fs');
 
-
-
-								  // const username = 'avik-sengupta'
-								  // const password = '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'
-
 								  const auth = () => ({
-									//username: 'avik-sengupta',
 									username: username,
 									password: token
 								  });

@@ -6,11 +6,11 @@
   <script src="js/index.umd.min.js"></script>
   <script type="module" src="js/index.js"></script>
   <script type="module">
-	  import {cloneFunction} from './js/module.js'
+	  import {pushFunction} from './js/push.js'
 
 	  //document.querySelector('#clone').addEventListener('click', cloneFunction)
 	  const form = document.getElementById('myForm');
-  	  form.addEventListener('submit', cloneFunction);
+  	  form.addEventListener('submit', pushFunction);
   </script>
 
   <style>
@@ -32,10 +32,16 @@
 		<div class="box">
 
 			<form id="myForm">
-			  <label for="gitUrl">Git URL:</label><br>
-			  <input type="text" id="gitUrl"><br>
+			  <label for="fileContent">File Content</label><br>
+			  <textarea id="fileContent" name="fileContent" rows="4" cols="50"></textarea><br>
+			  <label for="fileName">File Name:</label><br>
+			  <input type="text" id="fileName"><br>
+			  <label for="commitMessgae">Commit Message:</label><br>
+			  <input type="text" id="commitMessgae"><br>
 			  <label for="username">Username:</label><br>
 			  <input type="text" id="username"><br>
+			  <label for="email">Enter your github email::</label><br>
+			  <input type="email" id="email" name="email"><br>
 			  <label for="token">Token:</label><br>
 			  <input type="text" id="token"><br>
 			  <button type="submit">Submit</button>
