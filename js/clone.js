@@ -29,6 +29,7 @@
 
 								  var fs = BrowserFS.BFSRequire('fs');
 
+
 								  const auth = () => ({
 									username: username,
 									password: token
