@@ -58,8 +58,7 @@
 										  // Log the contents of the file to the console.
 										  console.log("Directory contents:", files);
 										  console.log(files.length)
-										  //const coupon = fs.readFileSync('/repo2/coupon.txt', 'utf8');
-										  // console.log(coupon)
+										  
 										  const list = document.getElementById("results");
 										  files.forEach((item) => {
 											// Create a new list item element
@@ -69,26 +68,9 @@
 											li.textContent = item;
 
 											// Append the list item to the list
-											if(item == 'coupon.txt'){
-												console.log("file here")
-												//const coupon = fs.readFile(item, 'utf8');
-												//console.log(coupon)
-												fs.readFile(`/repo2/${item}`, 'utf8', (err, contents) => {
-													  if (err) {
-													    console.error(err);
-													    return;
-													  }
-													  
-													  // Log contents 
-													  //console.log(contents);
-													  const coupon = contents
-													  console.log(coupon)
-													  //list.appendChild(coupon)
-													  list.innerHTML = coupon
-												});
-											}
-											//list.appendChild(li);
-											//console.log(contents)
+											list.appendChild(li);
+											
+											
 										  });
 									})
 								  })
