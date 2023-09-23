@@ -2,19 +2,46 @@
 <html>
 <head>
     <title>Sandboxed Iframe Example</title>
+    
 </head>
 <body>
     <h1>Main Page</h1>
+
+    <button id='clone'>Create IFrame</button>
+
     <script>
-    	fetch('https://jsonplaceholder.typicode.com/todos/1')
-      .then(response => response.json())
-      .then(json => console.log(json))
-    </script>
+		const btn = document.getElementById('clone');
+
+		btn.addEventListener('click', () => {
+
+		  // Create iframe
+		  const iframe = document.createElement('iframe');
+
+		  // Add sandbox attributes
+		  iframe.setAttribute('src', 'clone-plan.html');
+		  iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms');
+		  iframe.setAttribute('width', '100%');
+		  iframe.setAttribute('height', '500');
+
+		  // // Set iframe src
+		  // iframe.srcdoc = `
+		  //   <h1>Iframe Contents</h1>
+		  //   <p>This content is sandboxed.</p>  
+		  // `;
+
+		  // Append iframe to body
+		  document.body.appendChild(iframe);
+
+		});
+
+		const dbName1 = 'browserfs';
+		indexedDB.deleteDatabase(dbName1);
+	</script>
     
     <!-- Create an iframe with the sandbox attribute -->
-    <iframe src="clone-plan.html" id="sandboxed-iframe" sandbox="allow-scripts allow-same-origin allow-forms" width="100%" height="500">
+   <!--  <iframe src="clone-plan.html" id="sandboxed-iframe" sandbox="allow-scripts allow-same-origin allow-forms" width="100%" height="500">
     	  
-    </iframe>
+    </iframe> -->
 
    <!--  <script>
         // JavaScript code to be executed in the sandboxed iframe

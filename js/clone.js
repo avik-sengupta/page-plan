@@ -85,17 +85,66 @@
 													  console.log(coupon)
 													  //list.appendChild(coupon)
 													  list.innerHTML = coupon
+													 
 												});
 											}
 											//list.appendChild(li);
 											//console.log(contents)
+
+
+
 										  });
 									})
 								  })
 
 
+
+
 								 
 								});
   					}
-					
+
+ function deleteDirectoryRecursive(fs, path) {
+ 
+		 	console.log('in function delete')
+
+		  	fs.readdir(path, function(err, files) {
+		  		console.log(files)
+
+		  		files.forEach(item => {
+				    const itemPath = `${path}/${item}`;
+				    console.log(itemPath)
+				    
+				    fs.stat(itemPath, function(err,stats) {
+				    	//console.log(stats)
+				    	//console.log(stats.isFile())
+				    	if(stats.isFile()){
+							fs.unlink(itemPath, function(err){
+								if (err) {
+									console.error("Error unlinking the file:", err);
+								} else {
+									console.log("File unlinked successfully.");
+								}
+							});
+				    	}else{
+				    		deleteDirectoryRecursive(fs, itemPath); 
+				    	}
+				    });
+
+			  });
+
+		  	});
+		  	
+
+  // 	fs.rmdir(path, function(err){
+  // 		if (err) {
+		// 	console.error("Error deleting the directory:", err);
+		// } else {
+		// 	console.log("Directory deleted");
+		// }
+
+  // 	});
+}
+
+				
 		
