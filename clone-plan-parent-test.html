@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Plan</title>
+    <script src="js/browserfs.min.js"></script>
+  	<script src="js/index.umd.min.js"></script>
+  	<script type="module" src="js/index.js"></script>
+  	<script type="module">
+	  import {cloneFunction} from './js/clone-test.js'
+  	</script>
+</head>
+<body>
+    <h1>Main Page</h1>
+
+    <button id='clone'>Create IFrame</button>
+
+    <script>
+		const btn = document.getElementById('clone');
+
+		btn.addEventListener('click', () => {
+
+		  // Create iframe
+		  const iframe = document.createElement('iframe');
+
+		  // Add sandbox attributes
+		  iframe.setAttribute('src', 'clone-plan-iframe-test.html');
+		  iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms');
+		  iframe.setAttribute('width', '100%');
+		  iframe.setAttribute('height', '500');
+
+		  
+		  document.body.appendChild(iframe);
+
+			  window.addEventListener('message', function(event) {
+			    try {
+			        const jsonData = JSON.parse(event.data);
+			        console.log('JSON data received from iframe:', jsonData);
+		    	} catch (error) {
+		        	console.error('Error parsing JSON:', error);
+		   		}
+		   		// Send a response back to the iframe
+	                const response = {
+	                    message: 'Response from parent to iframe'
+	                };
+	                iframe.contentWindow.postMessage(response, '*');
+			});
+
+		});
+
+		// const dbName1 = 'browserfs';
+		// indexedDB.deleteDatabase(dbName1);
+	</script>
+    
+    <!-- Create an iframe with the sandbox attribute -->
+   <!--  <iframe src="clone-plan.html" id="sandboxed-iframe" sandbox="allow-scripts allow-same-origin allow-forms" width="100%" height="500">
+    	  
+    </iframe> -->
+
+   <!--  <script>
+        // JavaScript code to be executed in the sandboxed iframe
+        const iframe = document.getElementById('sandboxed-iframe');
+        const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+        
+        iframeDocument.open();
+        
+        iframeDocument.close();
+    </script> -->
+</body>
+</html>

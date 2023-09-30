@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BrowserFS Example</title>
+  <script src="js/browserfs.min.js"></script>
+  <script src="js/index.umd.min.js"></script>
+  <script type="module" src="js/index.js"></script>
+  <script type="module">
+	  import {cloneFunction} from './js/clone.js'
+
+	  //document.querySelector('#clone').addEventListener('click', cloneFunction)
+	  const form = document.getElementById('myForm1');
+  	  //form.addEventListener('submit', cloneFunction);
+  	  const parentOrigin = '*';
+
+  	  form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+            
+            // You can access form elements and their values like this:
+            let gitUrl = document.getElementById('gitUrl').value;
+            let username = document.getElementById("username").value;
+			let token = document.getElementById("token").value;
+
+            // Perform actions with the form data, e.g., send it to a server
+            const jsonData = {
+            message: 'Hello from the iframe!',
+            value: 42,
+            nestedObject: {
+                prop1: gitUrl,
+                prop2: username,
+                prop3: token
+            }
+        	};
+        	// Send the JSON data to the parent window without specifying event.origin
+        	window.parent.postMessage(JSON.stringify(jsonData), '*');
+
+        	
+      });
+
+      // Listen for messages from the parent
+    		window.addEventListener('message', function(event) {
+    			console.log("in message in iframe", event.origin)
+		        
+		            const response = event.data;
+		            console.log('Response from parent:', response);
+		        
+        	});
+
+  </script>
+
+  <style>
+    .container {
+      display: flex;
+    }
+    
+    .box {
+      width: 50%;
+      border: 1px solid black;
+      padding: 10px;
+    }
+  </style>
+
+</head>
+<body>
+
+	<div class="container">
+		<div class="box">
+
+			<form id="myForm1">
+			  <label for="gitUrl">Git URL:</label><br>
+			  <input type="text" id="gitUrl"><br>
+			  <label for="username">Username:</label><br>
+			  <input type="text" id="username"><br>
+			  <label for="token">Token:</label><br>
+			  <input type="text" id="token"><br>
+			  <button type="submit">Submit</button>
+			</form>
+
+		</div>
+
+		<div class="box">
+		  	<div id="results"></div>
+		</div>
+</body>
+</html>
