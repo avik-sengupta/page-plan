@@ -61,40 +61,53 @@
 										  console.log(files.length)
 										  //const coupon = fs.readFileSync('/repo2/coupon.txt', 'utf8');
 										  // console.log(coupon)
-										  const list = document.getElementById("results");
-										  files.forEach((item) => {
-											// Create a new list item element
-											const li = document.createElement("li");
 
-											// Set the text content of the list item to the array item
-											li.textContent = item;
+										 //  const list = document.getElementById("results");
+										 //  files.forEach((item) => {
+											// // Create a new list item element
+											// const li = document.createElement("li");
 
-											// Append the list item to the list
-											if(item == 'coupon.txt'){
-												console.log("file here")
-												//const coupon = fs.readFile(item, 'utf8');
-												//console.log(coupon)
-												fs.readFile(`/repo2/${item}`, 'utf8', (err, contents) => {
-													  if (err) {
-													    console.error(err);
-													    return;
-													  }
+											// // Set the text content of the list item to the array item
+											// li.textContent = item;
+
+											// // Append the list item to the list
+											// if(item == 'coupon.txt'){
+											// 	console.log("file here")
+											// 	//const coupon = fs.readFile(item, 'utf8');
+											// 	//console.log(coupon)
+											// 	fs.readFile(`/repo2/${item}`, 'utf8', (err, contents) => {
+											// 		  if (err) {
+											// 		    console.error(err);
+											// 		    return;
+											// 		  }
 													  
-													  // Log contents 
-													  //console.log(contents);
-													  const coupon = contents
-													  console.log(coupon)
-													  //list.appendChild(coupon)
-													  list.innerHTML = coupon
+											// 		  // Log contents 
+											// 		  //console.log(contents);
+											// 		  const coupon = contents
+											// 		  console.log(coupon)
+											// 		  //list.appendChild(coupon)
+											// 		  list.innerHTML = coupon
 													 
-												});
-											}
-											//list.appendChild(li);
-											//console.log(contents)
+											// 	});
+											// }
+											// });
+
+
+											const list = document.getElementById("results");
+										  	files.forEach((item) => {
+												// Create a new list item element
+												const li = document.createElement("li");
+
+												// Set the text content of the list item to the array item
+												li.textContent = item;
+
+												// Append the list item to the list
+												list.appendChild(li);
+											});
 
 
 
-										  });
+										 
 									})
 								  })
 
