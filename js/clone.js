@@ -10,7 +10,9 @@
 								console.log(username)
 								console.log(token)
 
-								const fs = new LightningFS('fs')
+								//const { promises: fs } = new LightningFS('testfs');
+
+								//const fs = new LightningFS('fs')
 
 								const dir = '/repo2'	
 
@@ -26,6 +28,22 @@
 									password: token
 								  });
 								  
+								  console.log(auth)
+
+
+								  BrowserFS.configure({
+                                                                  fs: "IndexedDB",
+                                                                  options: {}
+                                                                }, function(err) {
+                                                                  if (err) {
+                                                                        // Handle error
+                                                                        console.log(err);
+                                                                        return;
+                                                                  }
+
+                                                                  var fs = BrowserFS.BFSRequire('fs');
+
+
 								  git.clone({
 									  fs,
 									  http,
@@ -100,11 +118,12 @@
 
 										 
 									})
-								  })
+								 }).catch((error) => {
+    console.error('Git clone operation failed:', error);
+    console.error('Detailed error information:', error.message, error.data);
+  });
+		  });						  //console.log(fs)
 
-
-
-
-								 
+								 								 
   					}
 
